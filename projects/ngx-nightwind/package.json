@@ -1,0 +1,28 @@
+{
+  "name": "ngx-nightwind",
+  "version": "1.0.0",
+  "description": "Nightwind helper function as Angular service",
+  "repository": {
+    "type": "git",
+//    "url": "git+https://github.com/jjranalli/nightwind.git"
+  },
+  "keywords": [
+    "angular",
+    "ngx",
+    "nightwind"
+  ],
+  "license": "MIT",
+  "author": {
+    "name" : "devLukaszMichalak",
+    "email": "lukaszmichalak0402@gmail.com",
+    "url": "https://github.com/devLukaszMichalak"
+  },
+  "peerDependencies": {
+    "@angular/common": ">=10.0.0",
+    "@angular/core": ">=10.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}
