@@ -14,7 +14,9 @@
   "keywords": [
     "angular",
     "ngx",
-    "nightwind"
+    "nightwind",
+    "tailwindcss",
+    "tailwind"
   ],
   "license": "MIT",
   "author": {
