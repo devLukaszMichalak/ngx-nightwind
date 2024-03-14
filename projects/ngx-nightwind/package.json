@@ -4,7 +4,7 @@
   "description": "Nightwind helper function as Angular service",
   "repository": {
     "type": "git",
-//    "url": "git+https://github.com/jjranalli/nightwind.git"
+    "url": "git+https://github.com/devLukaszMichalak/ngx-nightwind.git"
   },
   "keywords": [
     "angular",
