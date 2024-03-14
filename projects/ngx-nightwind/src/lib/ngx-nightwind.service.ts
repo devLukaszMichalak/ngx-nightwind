@@ -25,11 +25,11 @@ export class NgxNightwind {
     }
   };
   
-  enableLight = (): void => this.enable(NGX_NIGHTWIND_LIGHT);
+  enableLight = (): void => this.enable(false);
   
-  enableDark = (): void => this.enable(NGX_NIGHTWIND_DARK);
+  enableDark = (): void => this.enable(true);
   
-  private enable = (value: typeof NGX_NIGHTWIND_DARK | typeof NGX_NIGHTWIND_LIGHT): void => {
+  private enable = (value: boolean): void => {
     const mode = value ? NGX_NIGHTWIND_DARK : NGX_NIGHTWIND_LIGHT;
     const opposite = value ? NGX_NIGHTWIND_LIGHT : NGX_NIGHTWIND_DARK;
     
