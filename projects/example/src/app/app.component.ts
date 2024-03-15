@@ -14,4 +14,6 @@ export class AppComponent {
   private ngxNightwind = inject(NgxNightwind)
   
   toggle = () => this.ngxNightwind.toggle()
+  light = () => this.ngxNightwind.enableLight()
+  dark = () => this.ngxNightwind.enableDark()
 }

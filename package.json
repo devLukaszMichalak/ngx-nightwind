@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start-example": "ng serve example",
-    "build": "ng build ngx-nightwind"
+    "build-lib": "ng build ngx-nightwind"
   },
   "repository": {
     "type": "git",

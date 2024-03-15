@@ -12,21 +12,46 @@ npm install ngx-nightwind
 
 ## Usage
 
+First provide the NgxNightwind using `provideNgxNightwind()` method in your application config:
 ```ts
-import { NgxNightwind } from 'ngx-nightwind'; 
+import { provideNgxNightwind } from 'ngx-nightwind';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    ...
+    provideNgxNightwind(),
+    ... 
+  ]
+};
+```
+
+Then you can use the service to manipulate the mode:
+
+```ts
+import { NgxNightwind } from 'ngx-nightwind';
 
 ...
 
-//inject the service to init
-  constructor(private ngxNightwind: NgxNightwind) {
+//inject the service
+constructor(private ngxNightwind: NgxNightwind) {
   
-    // switches to light mode
-    this.ngxNightwind.enableLight();
+  // switches to light mode
+  this.ngxNightwind.enableLight();
   
-    // switches to dark mode
-    this.ngxNightwind.enableDark();
+  // switches to dark mode
+  this.ngxNightwind.enableDark();
   
-    // toggle light/dark mode
-    this.ngxNightwind.toggle();
+  // toggle light/dark mode
+  this.ngxNightwind.toggle();
+  
+  // gets the current mode, light or dark
+  this.ngxNightwind.currentMode;
+  
+  // true if current mode is light
+  this.ngxNightwind.isLight;
+  
+  // true if current mode is dark
+  this.ngxNightwind.isDark;
+
 }
 ```

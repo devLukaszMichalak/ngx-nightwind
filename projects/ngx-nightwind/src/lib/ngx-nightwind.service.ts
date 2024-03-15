@@ -1,15 +1,11 @@
 import { Injectable } from '@angular/core';
 import { NGX_NIGHTWIND_DARK, NGX_NIGHTWIND_LIGHT } from './ngx-nightwind-state';
 
-
-@Injectable({
-  providedIn: 'root'
-})
+/*
+ * NgxNightwind service allows manipulation of the nightwind mode.
+ */
+@Injectable()
 export class NgxNightwind {
-  
-  constructor() {
-    this.getInitialColorMode() == NGX_NIGHTWIND_LIGHT ? document.documentElement.classList.remove(NGX_NIGHTWIND_DARK) : document.documentElement.classList.add(NGX_NIGHTWIND_DARK);
-  }
   
   toggle = (): void => {
     this.beforeTransition();
@@ -29,6 +25,18 @@ export class NgxNightwind {
   
   enableDark = (): void => this.enable(true);
   
+  get currentMode() {
+    return document.documentElement.classList.contains(NGX_NIGHTWIND_DARK) ? NGX_NIGHTWIND_DARK : NGX_NIGHTWIND_LIGHT;
+  }
+  
+  get isLight() {
+    return document.documentElement.classList.contains(NGX_NIGHTWIND_LIGHT);
+  }
+  
+  get isDark() {
+    return document.documentElement.classList.contains(NGX_NIGHTWIND_DARK);
+  }
+  
   private enable = (value: boolean): void => {
     const mode = value ? NGX_NIGHTWIND_DARK : NGX_NIGHTWIND_LIGHT;
     const opposite = value ? NGX_NIGHTWIND_LIGHT : NGX_NIGHTWIND_DARK;
@@ -41,22 +49,6 @@ export class NgxNightwind {
     
     document.documentElement.classList.add(mode);
     window.localStorage.setItem('nightwind-mode', mode);
-  };
-  
-  private getInitialColorMode = (): string => {
-    const persistedColorPreference = window.localStorage.getItem('nightwind-mode');
-    const hasPersistedPreference = typeof persistedColorPreference === 'string';
-    if (hasPersistedPreference) {
-      return persistedColorPreference;
-    }
-    
-    const mql = window.matchMedia('(prefers-color-scheme: dark)');
-    const hasMediaQueryPreference = typeof mql.matches === 'boolean';
-    if (hasMediaQueryPreference) {
-      return mql.matches ? NGX_NIGHTWIND_DARK : NGX_NIGHTWIND_LIGHT;
-    }
-    
-    return NGX_NIGHTWIND_LIGHT;
   };
   
   private beforeTransition = (): void => {
