@@ -17,7 +17,7 @@ export const appConfig: ApplicationConfig = {
 export const provideNgxNightwind = (): EnvironmentProviders =>
   makeEnvironmentProviders([{provide: NgxNightwind, useFactory: ngxNightwindFactory()}]);
 
-function ngxNightwindFactory() {
+function ngxNightwindFactory(): () => NgxNightwind {
   
   const getInitialColorMode = (): string => {
     const persistedColorPreference = window.localStorage.getItem('nightwind-mode');
