@@ -1,4 +1,4 @@
-import { EnvironmentProviders, makeEnvironmentProviders } from '@angular/core';
+import { APP_INITIALIZER, EnvironmentProviders, makeEnvironmentProviders } from '@angular/core';
 import { NgxNightwind } from './ngx-nightwind.service';
 import { NGX_NIGHTWIND_DARK, NGX_NIGHTWIND_LIGHT } from './ngx-nightwind-state';
 
@@ -15,9 +15,12 @@ export const appConfig: ApplicationConfig = {
 ```
  */
 export const provideNgxNightwind = (): EnvironmentProviders =>
-  makeEnvironmentProviders([{provide: NgxNightwind, useFactory: ngxNightwindFactory()}]);
+  makeEnvironmentProviders([
+    {provide: NgxNightwind, useFactory: () => new NgxNightwind()},
+    {provide: APP_INITIALIZER, useFactory: () => initializeNgxNightwind, multi: true}
+  ]);
 
-function ngxNightwindFactory(): () => NgxNightwind {
+const initializeNgxNightwind = () => {
   
   const getInitialColorMode = (): string => {
     const persistedColorPreference = window.localStorage.getItem('nightwind-mode');
@@ -36,6 +39,4 @@ function ngxNightwindFactory(): () => NgxNightwind {
   };
   
   getInitialColorMode() == NGX_NIGHTWIND_LIGHT ? document.documentElement.classList.remove(NGX_NIGHTWIND_DARK) : document.documentElement.classList.add(NGX_NIGHTWIND_DARK);
-  
-  return () => new NgxNightwind();
-}
+};
