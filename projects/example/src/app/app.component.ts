@@ -1,19 +1,18 @@
 import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { NgxNightwind } from '../../../ngx-nightwind/src/lib/ngx-nightwind.service';
+import { NgxNightwind } from 'ngx-nightwind';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
-  private ngxNightwind = inject(NgxNightwind)
+  
+  constructor(private ngxNightwind: NgxNightwind) {
+  }
   
   toggle = () => this.ngxNightwind.toggle()
   light = () => this.ngxNightwind.enableLight()
   dark = () => this.ngxNightwind.enableDark()
+  
 }
