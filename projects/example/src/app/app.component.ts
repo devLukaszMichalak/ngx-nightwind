@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NgxNightwind } from '../../../ngx-nightwind/src/lib/ngx-nightwind.service';
+import { NgxNightwind } from 'ngx-nightwind'
 
 @Component({
   selector: 'app-root',
