@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgxNightwind } from '../../../ngx-nightwind/src/lib/ngx-nightwind.service';
+import { NgxNightwind } from 'ngx-nightwind';
 
 @Component({
   selector: 'app-root',
