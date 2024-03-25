@@ -1,6 +1,6 @@
 {
   "name": "ngx-nightwind",
-  "version": "17.1.0",
+  "version": "15.0.0",
   "description": "Nightwind helper function as Angular service",
   "repository": {
     "type": "git",
@@ -20,8 +20,8 @@
     "url": "https://github.com/devLukaszMichalak"
   },
   "peerDependencies": {
-    "@angular/common": "^17",
-    "@angular/core": "^17"
+    "@angular/common": "^15",
+    "@angular/core": "^15"
   },
   "dependencies": {
     "tslib": "^2.3.0"
