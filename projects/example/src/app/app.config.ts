@@ -4,5 +4,5 @@ import { routes } from './app.routes';
 import { provideNgxNightwind } from '../../../ngx-nightwind/src/lib/ngx-nightwind.provider';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideNgxNightwind()]
+  providers: [provideRouter(routes), provideNgxNightwind("light")]
 };

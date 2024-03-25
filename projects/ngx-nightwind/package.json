@@ -1,6 +1,6 @@
 {
   "name": "ngx-nightwind",
-  "version": "17.0.3",
+  "version": "17.1.0",
   "description": "Nightwind helper function as Angular service",
   "repository": {
     "type": "git",

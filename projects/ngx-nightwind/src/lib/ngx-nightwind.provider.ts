@@ -9,18 +9,22 @@ export const appConfig: ApplicationConfig = {
   providers: [
     ...
     provideNgxNightwind(),
+    // or use provideNgxNightwind('dark')
+    // to override the default light mode
+    // when no preferred theme is set
+    // or no previous record in localstore is present
     ...
   ]
 };
 ```
  */
-export const provideNgxNightwind = (): EnvironmentProviders =>
+export const provideNgxNightwind = (defaultMode: typeof NGX_NIGHTWIND_LIGHT | typeof NGX_NIGHTWIND_DARK = NGX_NIGHTWIND_LIGHT): EnvironmentProviders =>
   makeEnvironmentProviders([
     {provide: NgxNightwind, useFactory: () => new NgxNightwind()},
-    {provide: APP_INITIALIZER, useFactory: () => initializeNgxNightwind, multi: true}
+    {provide: APP_INITIALIZER, useFactory: () => () => initializeNgxNightwind(defaultMode), multi: true}
   ]);
 
-const initializeNgxNightwind = () => {
+const initializeNgxNightwind = (defaultMode: typeof NGX_NIGHTWIND_LIGHT | typeof NGX_NIGHTWIND_DARK) => {
   
   const getInitialColorMode = (): string => {
     const persistedColorPreference = window.localStorage.getItem('nightwind-mode');
@@ -35,7 +39,7 @@ const initializeNgxNightwind = () => {
       return mql.matches ? NGX_NIGHTWIND_DARK : NGX_NIGHTWIND_LIGHT;
     }
     
-    return NGX_NIGHTWIND_LIGHT;
+    return defaultMode === NGX_NIGHTWIND_LIGHT ? NGX_NIGHTWIND_LIGHT : NGX_NIGHTWIND_DARK;
   };
   
   getInitialColorMode() == NGX_NIGHTWIND_LIGHT ? document.documentElement.classList.remove(NGX_NIGHTWIND_DARK) : document.documentElement.classList.add(NGX_NIGHTWIND_DARK);

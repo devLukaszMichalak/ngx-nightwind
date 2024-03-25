@@ -20,7 +20,11 @@ export const appConfig: ApplicationConfig = {
   providers: [
     ...
     provideNgxNightwind(),
-    ... 
+    // or use provideNgxNightwind('dark') 
+    // to override the default light mode 
+    // when no preferred theme is set 
+    // or no previous record in localstore is present
+    ...
   ]
 };
 ```
