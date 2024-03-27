@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, EnvironmentProviders, makeEnvironmentProviders } from '@angular/core';
+import { APP_INITIALIZER, Provider } from '@angular/core';
 import { NgxNightwind } from './ngx-nightwind.service';
 import { NGX_NIGHTWIND_DARK, NGX_NIGHTWIND_LIGHT } from './ngx-nightwind-state';
 
@@ -18,11 +18,11 @@ export const appConfig: ApplicationConfig = {
 };
 ```
  */
-export const provideNgxNightwind = (defaultMode: typeof NGX_NIGHTWIND_LIGHT | typeof NGX_NIGHTWIND_DARK = NGX_NIGHTWIND_LIGHT): EnvironmentProviders =>
-  makeEnvironmentProviders([
-    {provide: NgxNightwind, useFactory: () => new NgxNightwind()},
-    {provide: APP_INITIALIZER, useFactory: () => () => initializeNgxNightwind(defaultMode), multi: true}
-  ]);
+export const provideNgxNightwind = (defaultMode: typeof NGX_NIGHTWIND_LIGHT | typeof NGX_NIGHTWIND_DARK = NGX_NIGHTWIND_LIGHT): Provider[] => [
+  {provide: NgxNightwind, useFactory: () => new NgxNightwind()},
+  {provide: APP_INITIALIZER, useFactory: () => () => initializeNgxNightwind(defaultMode), multi: true}
+];
+
 
 const initializeNgxNightwind = (defaultMode: typeof NGX_NIGHTWIND_LIGHT | typeof NGX_NIGHTWIND_DARK) => {
   
