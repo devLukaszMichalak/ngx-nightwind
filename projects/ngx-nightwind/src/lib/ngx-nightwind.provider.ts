@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, EnvironmentProviders, makeEnvironmentProviders } from '@angular/core';
+import { APP_INITIALIZER, Provider } from '@angular/core';
 import { NgxNightwind } from './ngx-nightwind.service';
 import { NGX_NIGHTWIND_DARK, NGX_NIGHTWIND_LIGHT } from './ngx-nightwind-state';
 
@@ -18,24 +18,22 @@ export const appConfig: ApplicationConfig = {
 };
 ```
  */
-export const provideNgxNightwind = (defaultMode: typeof NGX_NIGHTWIND_LIGHT | typeof NGX_NIGHTWIND_DARK = NGX_NIGHTWIND_LIGHT): EnvironmentProviders =>
-  makeEnvironmentProviders([
-    {provide: NgxNightwind, useFactory: () => new NgxNightwind()},
-    {provide: APP_INITIALIZER, useFactory: () => () => initializeNgxNightwind(defaultMode), multi: true}
-  ]);
+export const provideNgxNightwind = (defaultMode: typeof NGX_NIGHTWIND_LIGHT | typeof NGX_NIGHTWIND_DARK = NGX_NIGHTWIND_LIGHT): Provider[] => [
+  {provide: NgxNightwind, useFactory: () => new NgxNightwind()},
+  {provide: APP_INITIALIZER, useFactory: () => () => initializeNgxNightwind(defaultMode), multi: true}
+];
+
 
 const initializeNgxNightwind = (defaultMode: typeof NGX_NIGHTWIND_LIGHT | typeof NGX_NIGHTWIND_DARK) => {
   
   const getInitialColorMode = (): string => {
     const persistedColorPreference = window.localStorage.getItem('nightwind-mode');
-    const hasPersistedPreference = typeof persistedColorPreference === 'string';
-    if (hasPersistedPreference) {
+    if (typeof persistedColorPreference === 'string') {
       return persistedColorPreference;
     }
     
     const mql = window.matchMedia('(prefers-color-scheme: dark)');
-    const hasMediaQueryPreference = typeof mql.matches === 'boolean';
-    if (hasMediaQueryPreference) {
+    if (typeof mql.matches === 'boolean') {
       return mql.matches ? NGX_NIGHTWIND_DARK : NGX_NIGHTWIND_LIGHT;
     }
     
