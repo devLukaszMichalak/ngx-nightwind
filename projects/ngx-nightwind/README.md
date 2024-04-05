@@ -19,7 +19,7 @@ import { provideNgxNightwind } from 'ngx-nightwind';
 export const appConfig: ApplicationConfig = {
   providers: [
     ...
-    provideNgxNightwind(),
+      provideNgxNightwind(),
     // or use provideNgxNightwind('dark') 
     // to override the default light mode 
     // when no preferred theme is set 
@@ -55,7 +55,7 @@ constructor(private ngxNightwind: NgxNightwind) {
   
   // Returns true if the current mode is dark
   this.ngxNightwind.isDark;
-  
+
 }
 ```
 
@@ -63,4 +63,4 @@ constructor(private ngxNightwind: NgxNightwind) {
 Feel free to contribute to NgxNightwind by opening issues or pull requests in the GitHub repository.
 
 ## License
-NgxNightwind is licensed under the MIT License. NgxNightwind is a library that provides a service with helper functions to easily manage nightwind dark mode in Angular applications.
+NgxNightwind is licensed under the MIT License.
