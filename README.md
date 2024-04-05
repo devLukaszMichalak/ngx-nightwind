@@ -1,18 +1,18 @@
 # NgxNightwind
 
-A library that provides a service with helper functions to manage nightwind dark mode easily in Angular.
+NgxNightwind is a library that provides a service with helper functions to easily manage nightwind dark mode in Angular applications.
 
 ## Instalation
 
-Install nightwind as explained in https://github.com/jjranalli/nightwind?tab=readme-ov-file#installation and then run:
-
+Before installing NgxNightwind, make sure to install Nightwind as explained in
+<a href="https://github.com/jjranalli/nightwind?tab=readme-ov-file#installation">Nightwind GitHub repository</a>, then run:
 ```sh
 npm install ngx-nightwind
 ```
 
 ## Usage
 
-First provide the NgxNightwind using `provideNgxNightwind()` method in your application config:
+First, provide the NgxNightwindService using the `provideNgxNightwind()` method in your application configuration:
 ```ts
 import { provideNgxNightwind } from 'ngx-nightwind';
 
@@ -23,39 +23,44 @@ export const appConfig: ApplicationConfig = {
     // or use provideNgxNightwind('dark') 
     // to override the default light mode 
     // when no preferred theme is set 
-    // or no previous record in localstore is present
-    ...
+    // or no previous record in localStorage is present
   ]
 };
 ```
 
-Then you can use the service to manipulate the mode:
+After providing the service, you can use it to manipulate the mode in your components:
 
 ```ts
 import { NgxNightwind } from 'ngx-nightwind';
 
 ...
 
-//inject the service
+// Inject the service in your component constructor
 constructor(private ngxNightwind: NgxNightwind) {
   
-  // switches to light mode
+  // Switches to light mode
   this.ngxNightwind.enableLight();
   
-  // switches to dark mode
+  // Switches to dark mode
   this.ngxNightwind.enableDark();
   
-  // toggle light/dark mode
+  // Toggles between light and dark mode
   this.ngxNightwind.toggle();
   
-  // gets the current mode, light or dark
+  // Gets the current mode: 'light' or 'dark'
   this.ngxNightwind.currentMode;
   
-  // true if current mode is light
+  // Returns true if the current mode is light
   this.ngxNightwind.isLight;
   
-  // true if current mode is dark
+  // Returns true if the current mode is dark
   this.ngxNightwind.isDark;
   
 }
 ```
+
+## Contribution
+Feel free to contribute to NgxNightwind by opening issues or pull requests in the GitHub repository.
+
+## License
+NgxNightwind is licensed under the MIT License.NgxNightwind is a library that provides a service with helper functions to easily manage nightwind dark mode in Angular applications.

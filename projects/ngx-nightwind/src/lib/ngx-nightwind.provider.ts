@@ -2,21 +2,21 @@ import { APP_INITIALIZER, EnvironmentProviders, makeEnvironmentProviders } from 
 import { NgxNightwind } from './ngx-nightwind.service';
 import { NGX_NIGHTWIND_DARK, NGX_NIGHTWIND_LIGHT } from './ngx-nightwind-state';
 
-/*
- * Provide the NgxNightwind in your application config:
-```ts
-export const appConfig: ApplicationConfig = {
-  providers: [
-    ...
-    provideNgxNightwind(),
-    // or use provideNgxNightwind('dark')
-    // to override the default light mode
-    // when no preferred theme is set
-    // or no previous record in localstore is present
-    ...
-  ]
-};
-```
+/**
+ * Provide the NgxNightwind in your application config.
+ * @param defaultMode Sets the default mode when no previous record in localStorage is present or when the user has chosen a preferred theme.
+ * @returns A set of providers to set up NgxNightwindService.
+ * @example
+ * ```ts
+ * export const appConfig: ApplicationConfig = {
+ *   providers: [
+ *     ...
+ *     provideNgxNightwind(),
+ *     // or use provideNgxNightwind('dark')
+ *     ...
+ *   ]
+ * };
+ * ```
  */
 export const provideNgxNightwind = (defaultMode: typeof NGX_NIGHTWIND_LIGHT | typeof NGX_NIGHTWIND_DARK = NGX_NIGHTWIND_LIGHT): EnvironmentProviders =>
   makeEnvironmentProviders([
@@ -24,8 +24,17 @@ export const provideNgxNightwind = (defaultMode: typeof NGX_NIGHTWIND_LIGHT | ty
     {provide: APP_INITIALIZER, useFactory: () => () => initializeNgxNightwind(defaultMode), multi: true}
   ]);
 
+/**
+ * Initializes NgxNightwind with the specified default mode.
+ * @param defaultMode The default mode to initialize NgxNightwind with.
+ */
 const initializeNgxNightwind = (defaultMode: typeof NGX_NIGHTWIND_LIGHT | typeof NGX_NIGHTWIND_DARK) => {
   
+  /**
+   * Retrieves the initial color mode based on localStorage, user preferences,
+   * or default mode.
+   * @returns The initial color mode.
+   */
   const getInitialColorMode = (): string => {
     const persistedColorPreference = window.localStorage.getItem('nightwind-mode');
     const hasPersistedPreference = typeof persistedColorPreference === 'string';

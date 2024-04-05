@@ -1,10 +1,11 @@
 {
   "name": "ngx-nightwind",
-  "version": "17.1.0",
+  "version": "17.1.1",
   "description": "Nightwind helper function as Angular service",
   "scripts": {
     "ng": "ng",
     "start-example": "ng serve example",
+    "test-lib": "ng test ngx-nightwind --source-map=false --browsers=ChromeHeadless --watch=false",
     "build-lib": "ng build ngx-nightwind",
     "lint-lib": "ng lint ngx-nightwind"
   },
