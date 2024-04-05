@@ -63,4 +63,4 @@ constructor(private ngxNightwind: NgxNightwind) {
 Feel free to contribute to NgxNightwind by opening issues or pull requests in the GitHub repository.
 
 ## License
-NgxNightwind is licensed under the MIT License.NgxNightwind is a library that provides a service with helper functions to easily manage nightwind dark mode in Angular applications.
+NgxNightwind is licensed under the MIT License. NgxNightwind is a library that provides a service with helper functions to easily manage nightwind dark mode in Angular applications.
