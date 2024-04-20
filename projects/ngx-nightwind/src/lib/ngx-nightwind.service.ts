@@ -30,7 +30,7 @@ export class NgxNightwind {
   }
   
   get isLight(): boolean {
-    return document.documentElement.classList.contains(NGX_NIGHTWIND_LIGHT);
+    return !this.isDark;
   }
   
   get isDark(): boolean {
