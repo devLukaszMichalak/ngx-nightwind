@@ -47,7 +47,7 @@ export class NgxNightwind {
    * @returns True if the current mode is light, otherwise false.
    */
   get isLight(): boolean {
-    return document.documentElement.classList.contains(NGX_NIGHTWIND_LIGHT);
+    return !this.isDark;
   }
   
   /**
