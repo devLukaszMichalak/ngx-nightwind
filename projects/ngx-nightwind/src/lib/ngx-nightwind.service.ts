@@ -25,12 +25,12 @@ export class NgxNightwind {
   
   enableDark = (): void => this.enable(true);
   
-  get currentMode(): typeof NGX_NIGHTWIND_LIGHT | typeof NGX_NIGHTWIND_DARK{
+  get currentMode(): typeof NGX_NIGHTWIND_LIGHT | typeof NGX_NIGHTWIND_DARK {
     return document.documentElement.classList.contains(NGX_NIGHTWIND_DARK) ? NGX_NIGHTWIND_DARK : NGX_NIGHTWIND_LIGHT;
   }
   
   get isLight(): boolean {
-    return document.documentElement.classList.contains(NGX_NIGHTWIND_LIGHT);
+    return !this.isDark;
   }
   
   get isDark(): boolean {
